@@ -152,23 +152,64 @@
       console.trace();
     }
     //step 3
+    let formRef = document.querySelector('form');
+    formRef.addEventListener('submit', e => {
 
-    //step 4
+      try {
+        let num1 = document.querySelector('#first-num').value;
+        let num2 = document.querySelector('#second-num').value;
 
+        if ((!num1 || !num2) || (isNaN(num1) || isNaN(num2))) {
+          throw new Error("Must Insert Valid Inputs");
+        }
 
-    //step5
-    window.TrackJS && TrackJS.install({ 
-      token: "18622d069ea948f78eee808bef5e5750"
-      // for more configuration options, see https://docs.trackjs.com
+      } catch (error) {
+        console.error(`Error: ${error.message}`);
+      } finally {
+        console.log("Yippie!");
+      }
     });
 
-                        
-    function Fglobal(){
 
+    //step 4
+    class CustomError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "CustomError";
+      }
+    }
+
+    function testError() {
+      throw new CustomError("custom error demo");
+    }
+
+    try {
+      testError();
+    } catch (error) {
+      console.error(`${error.message}`);
+    }
+
+    //step5
+    window.onerror = function () {
+      return true;
+    };
+
+    function Fglobal() {
+      boomDoom();
     }
 
 
   </script>
+
+<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "18622d069ea948f78eee808bef5e5750"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+  TrackJS.track('Testing TrackJS!');
+</script>
+                        
 </body>
 
 </html>
