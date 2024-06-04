@@ -69,25 +69,25 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button id = 'log' onclick = fLog()>Console Log</button>
+      <button id = 'error' onclick = fError()>Console Error</button>
+      <button id = 'count' onclick = fCount()>Console Count</button>
+      <button id = 'warn'onclick = fWarn() >Console Warn</button>
+      <button id = 'assert ' onclick = fAssert()>Console Assert</button>
+      <button id = 'clear' onclick = fClear()>Console Clear</button>
+      <button id = 'dir' onclick = fDir() >Console Dir</button>
+      <button id = 'dirxml' onclick = fDirxml()>Console dirxml</button>
+      <button id = 'startGroup' onclick = fStartGroup()>Console Group Start</button>
+      <button id = 'endGroup' onclick = fEndGroup()>Console Group End</button>
+      <button id = 'table' onclick = fTable()>Console Table</button>
+      <button id = 'startTimer' onclick = fStartTimer()>Start Timer</button>
+      <button id = 'endTimer' onclick = fEndTimer()>End Timer</button>
+      <button id = 'trace' onclick = fTrace()>Console Trace</button>
+      <button id = 'global' onclick = Fglobal()>Trigger a Global Error</button>
     </section>
   </main>
 
-  <script>
+  <script >
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -102,6 +102,72 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    //Step 2
+    function fLog(){
+      console.log('console log demo');
+    }
+    function fError(){
+      console.error('console error demo');
+    }
+    function fCount(){
+      console.count()
+    }
+    function fWarn(){
+      console.warn('console warn demo');
+    }
+    function fAssert(){
+      let errormsg = 'console assert demo (2 != 1)';
+      let number = 2;
+      console.assert(number === 1, {number, errormsg});
+    }
+    function fClear(){
+      console.clear();
+    }
+    function fDir(){
+      console.dir(document.getElementById('dir'))
+    }
+    function fDirxml(){
+      console.dirxml(document.getElementById('dirxml'))
+    }
+    function fStartGroup(){
+      console.group();
+    }
+    function fEndGroup(){
+      console.groupEnd();
+    }
+    function fTable(){
+      const x = [["Goodmoring", "1"],
+                  ["GoodAfternoon", "2"],
+                  ["GoodNight", "3"]
+      ];
+      console.table(x);
+    }
+    function fStartTimer(){
+      console.time();
+    }
+    function fEndTimer(){
+      console.timeEnd();
+    }
+    function fTrace(){
+      console.trace();
+    }
+    //step 3
+
+    //step 4
+
+
+    //step5
+    window.TrackJS && TrackJS.install({ 
+      token: "18622d069ea948f78eee808bef5e5750"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+
+                        
+    function Fglobal(){
+
+    }
+
+
   </script>
 </body>
 
